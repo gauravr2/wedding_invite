@@ -1,12 +1,14 @@
 :root {
-    --gold: #D4AF37;
+    --gold: #12110c;
     --dark-gold: #B49020;
     --text-grey: #555;
-    --cream-bg: #FCFBF7;
+    --cream-bg: #f5ecc8;
     --leaf-green: #4A6741;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
@@ -14,24 +16,29 @@ body {
     font-family: 'Cormorant Garamond', serif;
     background-color: var(--cream-bg);
     color: var(--text-grey);
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 /* --- 1. INTRO ANIMATION --- */
 #intro-layer {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    background: white; 
-    z-index: 9999; /* Below the Enter Overlay (10000), but above content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    /* Below the Enter Overlay (10000), but above content */
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     /* CRITICAL FIX: Delete the 'animation' line here. 
        Do not let it fade out automatically! */
     opacity: 1;
-    transition: opacity 1s ease; /* We will use this to fade it out later */
+    transition: opacity 1s ease;
+    /* We will use this to fade it out later */
 }
 
 /* Add this class to hide it later via Javascript */
@@ -48,7 +55,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Start hidden! Important */
+    opacity: 0;
+    /* Start hidden! Important */
     /* REMOVE the animation line from here */
 }
 
@@ -59,9 +67,10 @@ body {
 
 /* Individual Item Styles - NO ANIMATION HERE */
 .intro-ganesha {
-    width: 150px; 
+    width: 150px;
     height: auto;
-    margin: 20px 0; /* Adds safe space between image and text */
+    margin: 20px 0;
+    /* Adds safe space between image and text */
 }
 
 .intro-text {
@@ -74,7 +83,8 @@ body {
 .hindi {
     font-size: 2.2rem;
     font-weight: 600;
-    margin-bottom: 20px; /* Push text up away from head */
+    margin-bottom: 20px;
+    /* Push text up away from head */
 }
 
 .english {
@@ -82,19 +92,40 @@ body {
     font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-top: 20px; /* Push text down away from feet */
+    margin-top: 20px;
+    /* Push text down away from feet */
 }
 
 /* Keyframes */
 @keyframes zoomInGanesha {
-    0% { transform: scale(0.5); opacity: 0; }
-    40% { transform: scale(1.2); opacity: 1; } /* Stays visible for a moment */
-    80% { opacity: 1; } /* Start fading out late */
-    100% { transform: scale(8); opacity: 0; } /* Zoom huge and vanish */
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    /* Stays visible for a moment */
+    80% {
+        opacity: 1;
+    }
+
+    /* Start fading out late */
+    100% {
+        transform: scale(8);
+        opacity: 0;
+    }
+
+    /* Zoom huge and vanish */
 }
 
 @keyframes fadeOutLayer {
-    to { visibility: hidden; }
+    to {
+        visibility: hidden;
+    }
 }
 
 /* --- 2. MAIN CARD --- */
@@ -107,19 +138,23 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    
+
     /* CHANGE HERE: Start hidden, but REMOVE the 'animation' line */
-    opacity: 0; 
-    transition: opacity 2s ease-in-out; /* We will use this transition later */
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    /* We will use this transition later */
 }
 
 /* Add this NEW class */
 .fade-in-card {
-    opacity: 1; /* This makes it visible */
+    opacity: 1;
+    /* This makes it visible */
 }
 
 @keyframes showContent {
-    to { opacity: 1; }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Text Styling to match image */
@@ -130,8 +165,8 @@ body {
 }
 
 .parents {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: bold;
     color: var(--gold);
     letter-spacing: 1px;
 }
@@ -163,15 +198,30 @@ h1 {
     margin: 10px 0;
 }
 
+.highlight-time {
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
 /* Floral Images Positioning */
 .floral-deco {
     position: absolute;
-    width: 200px; /* Adjust based on image quality */
+    width: 200px;
+    /* Adjust based on image quality */
     z-index: -1;
 }
 
-.left-deco { bottom: 0; left: 0; }
-.right-deco { bottom: 0; right: 0; }
+.left-deco {
+    bottom: 0;
+    left: 0;
+}
+
+.right-deco {
+    bottom: 0;
+    right: 0;
+}
 
 /* Button */
 .scroll-btn {
@@ -218,7 +268,7 @@ h1 {
     width: 300px;
     border-radius: 10px;
     background: #fdfdfd;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .event-box h3 {
@@ -240,9 +290,19 @@ h1 {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    h1 { font-size: 1.8rem; }
-    .floral-deco { width: 120px; opacity: 0.5; } /* Fade flowers on mobile so text is readable */
-    .parents { font-size: 1rem; }
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .floral-deco {
+        width: 120px;
+        opacity: 0.5;
+    }
+
+    /* Fade flowers on mobile so text is readable */
+    .parents {
+        font-size: 1rem;
+    }
 }
 
 /* --- FLOWER RAIN ANIMATION --- */
@@ -254,16 +314,20 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Crucial: lets you click through to the invite */
-    z-index: 0; /* Sit behind the text content */
+    pointer-events: none;
+    /* Crucial: lets you click through to the invite */
+    z-index: 0;
+    /* Sit behind the text content */
     overflow: hidden;
 }
 
 /* The individual flower/petal style */
 .falling-flower {
     position: absolute;
-    top: -10%; /* Start just off-screen */
-    max-width: 20px; /* Adjust based on how big you want petals */
+    top: -10%;
+    /* Start just off-screen */
+    max-width: 20px;
+    /* Adjust based on how big you want petals */
     height: auto;
     opacity: 0.8;
     /* The animation definition */
@@ -278,25 +342,33 @@ h1 {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
     }
+
     10% {
         opacity: 0.8;
     }
+
     90% {
         opacity: 0.8;
     }
+
     100% {
         /* Fall down 110% of screen height and rotate once */
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
 }
+
 /* --- ENTER SCREEN --- */
 #enter-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100vh;
-    background-color: var(--royal-maroon); /* Or your maroon color #630330 */
-    z-index: 10000; /* Must be on top of everything */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--royal-maroon);
+    /* Or your maroon color #630330 */
+    z-index: 10000;
+    /* Must be on top of everything */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,7 +389,7 @@ h1 {
 }
 
 #enter-btn {
-    background: var(--gold);
+    background: var(--dark-gold);
     color: #630330;
     border: none;
     padding: 15px 40px;
@@ -336,14 +408,18 @@ h1 {
 /* Container to handle the map sizing */
 .map-container {
     margin-top: 15px;
-    border: 2px solid var(--gold); /* Gold border around the map */
+    border: 2px solid var(--gold);
+    /* Gold border around the map */
     border-radius: 5px;
-    overflow: hidden; /* Ensures the map doesn't spill out of rounded corners */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    /* Ensures the map doesn't spill out of rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Force the iframe to fit properly */
 .map-container iframe {
-    display: block; /* Removes extra white space below map */
-    width: 100%;    /* Fills the box width */
+    display: block;
+    /* Removes extra white space below map */
+    width: 100%;
+    /* Fills the box width */
 }

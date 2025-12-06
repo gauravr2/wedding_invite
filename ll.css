@@ -678,3 +678,170 @@ h1, h2, h3, .couple-names-intro {
     filter: sepia(100%) saturate(300%) brightness(110%);
     opacity: 0;
 }
+
+:root {
+    /* --- DEEP VELVET MAROON PALETTE --- */
+    
+    /* 1. The Backgrounds */
+    --bg-dark: #2b0215;       /* Very dark, almost black-red (Wine Color) */
+    --card-bg: #4a0424;       /* Slightly lighter burgundy for the cards */
+    
+    /* 2. The Gold (Solid & Bright) */
+    --gold-solid: #FFD700;    /* Pure Gold */
+    --gold-dim: #C5A028;      /* Slightly darker gold for borders */
+    
+    /* 3. The Text */
+    --text-cream: #FFFDD0;    /* Cream color for smaller text (readable on dark) */
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* Optional: A subtle radial gradient to give it a "Spotlight" feel */
+    background-image: radial-gradient(circle at center, #4a0424 0%, #2b0215 100%);
+    background-attachment: fixed;
+    color: var(--text-cream);
+}
+
+/* --- TEXT STYLES (Clean & Sharp) --- */
+
+/* 1. Main Headings (Couple Name, Ganesha Text) */
+h1, h2, h3, .couple-names-intro, .intro-text {
+    color: var(--gold-solid);
+    /* A dark shadow behind the text makes it lift off the screen */
+    text-shadow: 2px 2px 4px #000000; 
+    font-weight: 700;
+}
+
+/* 2. Highlighted Dates */
+.highlight-date {
+    color: var(--gold-solid);
+    font-weight: bold;
+    border-bottom: 1px solid var(--gold-dim); /* Adds a nice gold line under date */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* 3. Body Text (Parents, Location) */
+.parents, .invite-line, .main-details p, .loc, .time {
+    color: var(--text-cream);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Slight shadow for readability */
+}
+
+/* --- ELEMENT STYLES --- */
+
+/* 1. The Cards (Event Boxes) */
+.event-box, .map-container, .enter-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--gold-dim);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6); /* Heavy shadow for depth */
+}
+
+/* 2. The Enter Overlay (Matches background) */
+#enter-overlay {
+    background-color: var(--bg-dark);
+}
+
+/* 3. The Buttons */
+.scroll-btn, #enter-btn {
+    background: transparent;
+    border: 1px solid var(--gold-solid);
+    color: var(--gold-solid);
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: var(--gold-solid);
+    color: var(--bg-dark); /* Text turns dark maroon */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* Gold Glow */
+}
+
+/* 4. The Flowers (Gold Tinted) */
+.floral-deco, .falling-flower {
+    /* Makes them look like Antique Gold ornaments */
+    filter: sepia(100%) saturate(150%) hue-rotate(350deg) brightness(90%);
+    opacity: 0.9;
+}
+
+:root {
+    /* --- MIDNIGHT GARDEN PALETTE (Original Colors, Darker Mode) --- */
+    
+    /* 1. Backgrounds - Derived from the leaves in your image */
+    --bg-dark: #0a2f1c;       /* Deep Forest/Emerald Green */
+    --card-bg: #14402a;       /* Slightly lighter green for cards */
+    
+    /* 2. The Original Gold */
+    --gold: #D4AF37;          /* The classic gold from your image */
+    --gold-dim: #bfa15f;      /* Softer gold for borders */
+    
+    /* 3. Text Colors */
+    --text-cream: #F0FDF4;    /* Very pale mint/white (reads better than stark white) */
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* Optional: Subtle texture gradient */
+    background-image: radial-gradient(circle at center, #14402a 0%, #0a2f1c 100%);
+    color: var(--text-cream);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* --- TEXT STYLING --- */
+
+/* 1. Main Headings (Gold & Elegant) */
+h1, h2, h3, .couple-names-intro, .intro-text, .highlight-date {
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    /* Soft dark shadow to lift text off the green */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); 
+}
+
+/* 2. Body Text (Parents, Location) */
+.parents, .invite-line, .main-details p, .loc, .time {
+    color: var(--text-cream);
+    letter-spacing: 0.5px;
+}
+
+/* 3. Icons & Accents */
+.fas, .divider, .ampersand, .top-om {
+    color: var(--gold);
+}
+
+/* --- CARDS & BOXES --- */
+
+.event-box, .map-container, .enter-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--gold-dim);
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4); /* Deep shadow */
+}
+
+/* --- BUTTONS --- */
+
+.scroll-btn, #enter-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Cinzel', serif;
+    transition: all 0.3s ease;
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: var(--gold);
+    color: var(--bg-dark); /* Text turns dark green on hover */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* --- FLOWERS (Natural Look) --- */
+
+/* Since your background is dark green, the white flowers will pop naturally.
+   We don't need a heavy filter, maybe just a slight brightness boost. */
+.floral-deco, .falling-flower {
+    filter: brightness(1.1) contrast(1.1);
+    opacity: 1;
+}
+
+/* --- ENTER SCREEN --- */
+#enter-overlay {
+    background-color: var(--bg-dark);
+}
