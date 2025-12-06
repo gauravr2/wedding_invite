@@ -26,24 +26,18 @@ body {
 /* --- 1. INTRO ANIMATION --- */
 #intro-layer {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Use your background variable so it matches the theme */
-    background: var(--bg-dark); 
-    z-index: 9999;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: white; 
+    z-index: 9999; /* Below the Enter Overlay (10000), but above content */
     display: flex;
     justify-content: center;
     align-items: center;
+    
+    /* CRITICAL FIX: Delete the 'animation' line here. 
+       Do not let it fade out automatically! */
     opacity: 1;
-    transition: opacity 1s ease;
-    /* IMPORTANT: If animation fails, this lets clicks pass through */
-    pointer-events: none; 
-}
-
-#intro-layer:not(.hide-intro) {
-    pointer-events: auto;
+    transition: opacity 1s ease; /* We will use this to fade it out later */
 }
 
 /* Add this class to hide it later via Javascript */
