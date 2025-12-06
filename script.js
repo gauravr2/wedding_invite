@@ -49,3 +49,56 @@ function scrollToEvents() {
         behavior: 'smooth' 
     });
 }
+
+/* --- SMART MUSIC PLAYER --- */
+
+document.addEventListener("DOMContentLoaded", function() {
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    let isPlaying = false;
+
+    // Helper function to update the icon
+    function updateIcon() {
+        if (isPlaying) {
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>'; // Pause icon
+            musicBtn.style.animation = 'none'; // Stop pulsing when playing
+        } else {
+            musicBtn.innerHTML = '<i class="fas fa-music"></i>'; // Music icon
+            musicBtn.style.animation = 'pulse-gold 2s infinite'; // Pulse when paused
+        }
+    }
+
+    // 1. Try to play immediately on load
+    music.play().then(() => {
+        // If successful (some browsers allow it)
+        isPlaying = true;
+        updateIcon();
+    }).catch(error => {
+        // If blocked (most browsers), wait for the first user interaction
+        console.log("Autoplay blocked. Waiting for interaction.");
+        
+        const startMusicOnInteraction = () => {
+            music.play();
+            isPlaying = true;
+            updateIcon();
+            // Remove the listeners so it doesn't try to play again every click
+            document.removeEventListener('click', startMusicOnInteraction);
+            document.removeEventListener('scroll', startMusicOnInteraction);
+        };
+
+        document.addEventListener('click', startMusicOnInteraction);
+        document.addEventListener('scroll', startMusicOnInteraction);
+    });
+
+    // 2. Manual Toggle Button Logic
+    window.toggleMusic = function() {
+        if (isPlaying) {
+            music.pause();
+            isPlaying = false;
+        } else {
+            music.play();
+            isPlaying = true;
+        }
+        updateIcon();
+    };
+});
