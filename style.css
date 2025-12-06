@@ -130,7 +130,7 @@ body {
 }
 
 .parents {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     color: var(--gold);
     letter-spacing: 1px;
@@ -331,4 +331,19 @@ h1 {
 #enter-btn:hover {
     transform: scale(1.1);
     background: #fff;
+}
+
+/* Container to handle the map sizing */
+.map-container {
+    margin-top: 15px;
+    border: 2px solid var(--gold); /* Gold border around the map */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the map doesn't spill out of rounded corners */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Force the iframe to fit properly */
+.map-container iframe {
+    display: block; /* Removes extra white space below map */
+    width: 100%;    /* Fills the box width */
 }
