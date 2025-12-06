@@ -9,20 +9,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <audio id="bg-music" loop>
-        <source src="music.mp3" type="audio/mpeg">
+    <div id="enter-overlay">
+        <div class="enter-content">
+            <p>Wedding Invitation</p>
+            <p class="couple-names-intro">Raghuram & Haritha</p>
+            <button id="enter-btn">Open Invitation</button>
+        </div>
+    </div>
+    
+    <div id="intro-layer">
+        <div class="ganesha-container" id="ganesha-animator">
+            <p class="intro-text hindi">|| श्री गणेशाय नमः ||</p>
+            <img src="ganesha.png" class="intro-ganesha" alt="Ganesha">
+            <p class="intro-text english">Wedding Invitation</p>
+        </div>
+    </div>
+    <audio id="bg-music" loop> <source src="music.mp3" type="audio/mpeg">
     </audio>
     <button id="music-btn" onclick="toggleMusic()">
         <i class="fas fa-music"></i> </button>
     <div id="flower-rain-container"></div>
 
-    <div id="intro-layer">
+    <!-- <div id="intro-layer">
         <div class="ganesha-container">
             <p class="intro-text hindi">|| श्री गणेशाय नमः ||</p>
             <img src="ganesha.png" class="intro-ganesha" alt="Ganesha"> 
             <p class="intro-text english">Wedding Invitation</p>
         </div>
-    </div>
+    </div> -->
 
     <header class="wedding-card" id="main-content">
         <!-- <img src="flowers.png" class="floral-deco left-deco" alt="flowers">

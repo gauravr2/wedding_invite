@@ -18,19 +18,25 @@ body {
 }
 
 /* --- 1. INTRO ANIMATION --- */
-/* --- 1. INTRO ANIMATION --- */
-
 #intro-layer {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100vh;
-    background: white; /* Or var(--cream-bg) to match invite */
-    z-index: 9999;
+    background: white; 
+    z-index: 9999; /* Below the Enter Overlay (10000), but above content */
     display: flex;
     justify-content: center;
     align-items: center;
-    /* The layer itself fades out at the end so you can click the invite */
-    animation: fadeOutLayer 0.5s ease-in-out 2.8s forwards;
+    
+    /* CRITICAL FIX: Delete the 'animation' line here. 
+       Do not let it fade out automatically! */
+    opacity: 1;
+    transition: opacity 1s ease; /* We will use this to fade it out later */
+}
+
+/* Add this class to hide it later via Javascript */
+.hide-intro {
+    opacity: 0 !important;
     pointer-events: none;
 }
 
@@ -39,12 +45,16 @@ body {
 */
 .ganesha-container {
     display: flex;
-    flex-direction: column; /* Stacks them vertically */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-    /* The Animation applies to the whole group */
-    animation: zoomInGanesha 5s ease-in-out forwards;
+    opacity: 0; /* Start hidden! Important */
+    /* REMOVE the animation line from here */
+}
+
+.run-animation {
+    /* We only add this class via Javascript after the click */
+    animation: zoomInGanesha 4s ease-in-out forwards;
 }
 
 /* Individual Item Styles - NO ANIMATION HERE */
@@ -97,8 +107,15 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    opacity: 0; /* Starts hidden */
-    animation: showContent 1.5s ease-in-out 2.5s forwards; /* Appears as Ganesha fades */
+    
+    /* CHANGE HERE: Start hidden, but REMOVE the 'animation' line */
+    opacity: 0; 
+    transition: opacity 2s ease-in-out; /* We will use this transition later */
+}
+
+/* Add this NEW class */
+.fade-in-card {
+    opacity: 1; /* This makes it visible */
 }
 
 @keyframes showContent {
@@ -272,4 +289,46 @@ h1 {
         transform: translateY(110vh) rotate(360deg);
         opacity: 0;
     }
+}
+/* --- ENTER SCREEN --- */
+#enter-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background-color: var(--royal-maroon); /* Or your maroon color #630330 */
+    z-index: 10000; /* Must be on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold);
+}
+
+.enter-content {
+    text-align: center;
+    /*border: 2px solid var(--gold);*/
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.couple-names-intro {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    margin: 10px 0 30px;
+}
+
+#enter-btn {
+    background: var(--gold);
+    color: #630330;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+#enter-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
 }
