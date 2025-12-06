@@ -331,6 +331,12 @@ h1 {
     }
 }
 
+@media (min-width: 800px) {
+    .top-banner-img {
+        display: none;
+    }
+}
+
 /* --- SNOW/BUBBLE ANIMATION --- */
 #snow-container {
     position: fixed;
