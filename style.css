@@ -206,11 +206,13 @@ h1 {
 }
 
 /* Floral Images Positioning */
+/* Floral Images Positioning */
 .floral-deco {
     position: absolute;
     width: 200px;
-    /* Adjust based on image quality */
-    z-index: -1;
+    z-index: 1;
+    /* Bring them partially up if needed, or keep -1 background. detailed in user req? "on the corners" */
+    pointer-events: none;
 }
 
 .left-deco {
@@ -221,6 +223,29 @@ h1 {
 .right-deco {
     bottom: 0;
     right: 0;
+    transform: scaleX(-1);
+}
+
+.top-left-deco {
+    top: 0;
+    left: 0;
+    transform: scaleY(-1);
+}
+
+.top-right-deco {
+    top: 0;
+    right: 0;
+    transform: scale(-1);
+}
+
+.top-banner-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: -2;
+    /* Sit behind content if overlaps */
 }
 
 /* Button */
