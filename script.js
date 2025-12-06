@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
             enterOverlay.style.display = "none"; 
             
             // 3. START FLOWERS NOW (Moved inside the click!)
-            createFlowerRain();
+            //createFlowerRain();
 
             // 4. Start Ganesha Animation
             // Since introLayer is now visible by default, this will show up immediately

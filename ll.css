@@ -1,0 +1,680 @@
+:root {
+    /* --- THE VIBRANT DARK PALETTE --- */
+    --bg-dark: #1a0b2e;       /* Deep Indigo/Purple */
+    --card-bg: #2d1b4e;       /* Slightly lighter purple for boxes */
+    
+    --gold: #FFD700;          /* Bright Gold */
+    --text-light: #fdfbf7;    /* Almost White for readability */
+    
+    /* Vibrant Accents */
+    --hot-pink: #ff007f;
+    --bright-orange: #ff5e00;
+    --neon-teal: #00f2ea;
+    
+    /* Gradients */
+    --festive-gradient: linear-gradient(45deg, var(--hot-pink), var(--gold), var(--bright-orange));
+    --border-gradient: linear-gradient(to right, var(--hot-pink), var(--gold), var(--neon-teal));
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* --- 1. INTRO ANIMATION --- */
+#intro-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background: white; 
+    z-index: 9999; /* Below the Enter Overlay (10000), but above content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* CRITICAL FIX: Delete the 'animation' line here. 
+       Do not let it fade out automatically! */
+    opacity: 1;
+    transition: opacity 1s ease; /* We will use this to fade it out later */
+}
+
+/* Add this class to hide it later via Javascript */
+.hide-intro {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+/* FIX: We apply the zoom animation to this CONTAINER. 
+   This ensures the text and image stay spaced apart while zooming.
+*/
+.ganesha-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Start hidden! Important */
+    /* REMOVE the animation line from here */
+}
+
+.run-animation {
+    /* We only add this class via Javascript after the click */
+    animation: zoomInGanesha 4s ease-in-out forwards;
+}
+
+/* Individual Item Styles - NO ANIMATION HERE */
+.intro-ganesha {
+    width: 150px; 
+    height: auto;
+    margin: 20px 0; /* Adds safe space between image and text */
+}
+
+.intro-text {
+    color: var(--gold);
+    text-align: center;
+    margin: 0;
+}
+
+/* Specific Fonts */
+.hindi {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 20px; /* Push text up away from head */
+}
+
+.english {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 20px; /* Push text down away from feet */
+}
+
+/* Keyframes */
+@keyframes zoomInGanesha {
+    0% { transform: scale(0.5); opacity: 0; }
+    40% { transform: scale(1.2); opacity: 1; } /* Stays visible for a moment */
+    80% { opacity: 1; } /* Start fading out late */
+    100% { transform: scale(8); opacity: 0; } /* Zoom huge and vanish */
+}
+
+@keyframes fadeOutLayer {
+    to { visibility: hidden; }
+}
+
+/* --- 2. MAIN CARD --- */
+.wedding-card {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    
+    /* CHANGE HERE: Start hidden, but REMOVE the 'animation' line */
+    opacity: 0; 
+    transition: opacity 2s ease-in-out; /* We will use this transition later */
+}
+
+/* Add this NEW class */
+.fade-in-card {
+    opacity: 1; /* This makes it visible */
+}
+
+@keyframes showContent {
+    to { opacity: 1; }
+}
+
+/* Text Styling to match image */
+.top-om {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.parents {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.invite-line {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin: 10px 0 30px;
+}
+
+h1 {
+    /* Making the names colorful */
+    background: var(--festive-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    /* Add a glow effect */
+    filter: drop-shadow(0 0 5px rgba(255, 0, 127, 0.3));
+}
+
+.ampersand {
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin: 10px 0;
+}
+
+.highlight-date {
+    font-size: 1.5rem;
+    color: var(--gold);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Floral Images Positioning */
+.floral-deco {
+    position: absolute;
+    width: 200px; /* Adjust based on image quality */
+    z-index: -1;
+}
+
+.left-deco { bottom: 0; left: 0; }
+.right-deco { bottom: 0; right: 0; }
+
+/* Button */
+.scroll-btn {
+    margin-top: 40px;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 20px;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 50px;
+}
+
+.scroll-btn:hover {
+    background: var(--gold);
+    color: white;
+}
+
+/* --- 3. EVENTS SECTION --- */
+#events-section {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+#events-section h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    margin-bottom: 40px;
+}
+
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.event-box {
+    border: 1px solid var(--gold);
+    padding: 30px;
+    width: 300px;
+    border-radius: 10px;
+    background: #fdfdfd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.event-box h3 {
+    color: var(--leaf-green);
+    font-family: 'Cinzel', serif;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: var(--gold);
+    font-weight: bold;
+    border-bottom: 1px dashed var(--gold);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    .floral-deco { width: 120px; opacity: 0.5; } /* Fade flowers on mobile so text is readable */
+    .parents { font-size: 1rem; }
+}
+
+/* --- FLOWER RAIN ANIMATION --- */
+
+/* The container that holds all falling flowers */
+#flower-rain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Crucial: lets you click through to the invite */
+    z-index: 0; /* Sit behind the text content */
+    overflow: hidden;
+}
+
+/* The individual flower/petal style */
+.falling-flower {
+    position: absolute;
+    top: -10%; /* Start just off-screen */
+    max-width: 20px; /* Adjust based on how big you want petals */
+    height: auto;
+    opacity: 0.8;
+    /* The animation definition */
+    animation-name: flowerFall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* The Keyframes that make it fall and spin */
+@keyframes flowerFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        /* Fall down 110% of screen height and rotate once */
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+/* --- ENTER SCREEN --- */
+#enter-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100vh;
+    background-color: var(--royal-maroon); /* Or your maroon color #630330 */
+    z-index: 10000; /* Must be on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold);
+}
+
+.enter-content {
+    text-align: center;
+    /*border: 2px solid var(--gold);*/
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.couple-names-intro {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    margin: 10px 0 30px;
+}
+
+#enter-btn {
+    background: var(--gold);
+    color: #630330;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-family: 'Cinzel', serif;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+#enter-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+}
+
+/* Container to handle the map sizing */
+.map-container {
+    margin-top: 15px;
+    border: 2px solid var(--gold); /* Gold border around the map */
+    border-radius: 5px;
+    overflow: hidden; /* Ensures the map doesn't spill out of rounded corners */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Force the iframe to fit properly */
+.map-container iframe {
+    display: block; /* Removes extra white space below map */
+    width: 100%;    /* Fills the box width */
+}
+
+.parents, .invite-line, .main-details p {
+    color: var(--text-light); /* Make sure all text is readable on dark */
+}
+
+.highlight-date {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Gold Glow */
+}
+
+:root {
+    /* --- THE VIBRANT DARK PALETTE --- */
+    --bg-dark: #1a0b2e;       /* Deep Indigo/Purple */
+    --card-bg: #2d1b4e;       /* Slightly lighter purple for boxes */
+    
+    --gold: #FFD700;          /* Bright Gold */
+    --text-light: #fdfbf7;    /* Almost White for readability */
+    
+    /* Vibrant Accents */
+    --hot-pink: #ff007f;
+    --bright-orange: #ff5e00;
+    --neon-teal: #00f2ea;
+    
+    /* Gradients */
+    --festive-gradient: linear-gradient(45deg, var(--hot-pink), var(--gold), var(--bright-orange));
+    --border-gradient: linear-gradient(to right, var(--hot-pink), var(--gold), var(--neon-teal));
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* 1. Update the Main Card Text */
+h1 {
+    /* Making the names colorful */
+    background: var(--festive-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    /* Add a glow effect */
+    filter: drop-shadow(0 0 5px rgba(255, 0, 127, 0.3));
+}
+
+.parents, .invite-line, .main-details p {
+    color: var(--text-light); /* Make sure all text is readable on dark */
+}
+
+.highlight-date {
+    color: var(--gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Gold Glow */
+}
+
+/* 2. Update the Event Boxes (Cards) */
+.event-box {
+    background: var(--card-bg);
+    border: 2px solid transparent; /* Prepare for gradient border */
+    border-image: var(--border-gradient);
+    border-image-slice: 1;
+    color: var(--text-light);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Deep shadow */
+}
+
+.event-box h3 {
+    color: var(--hot-pink); /* Pink Headings for events */
+    border-bottom: 1px solid var(--neon-teal);
+}
+
+.event-box .icon-header {
+    color: var(--gold);
+    font-size: 2rem;
+}
+
+/* 3. Update Buttons */
+.scroll-btn, #enter-btn {
+    background: transparent;
+    border: 2px solid var(--neon-teal);
+    color: var(--neon-teal);
+    box-shadow: 0 0 10px rgba(0, 242, 234, 0.2);
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: var(--neon-teal);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px rgba(0, 242, 234, 0.6);
+}
+
+/* 4. Update the Enter Overlay (The cover screen) */
+#enter-overlay {
+    background-color: #0f0518; /* Even darker purple for maximum contrast */
+}
+
+.enter-content {
+    border-color: var(--hot-pink); /* Pink border for the enter box */
+}
+
+:root {
+    /* --- ROYAL BLACK & GOLD PALETTE --- */
+    --bg-dark: #000000;       /* Pure Black for maximum contrast */
+    --card-bg: #111111;       /* Very dark grey for cards */
+    
+    /* The Gold Spectrum */
+    --gold-leaf: #d4af37;     /* Standard Gold */
+    --gold-pale: #f3e5ab;     /* Light shimmer */
+    --gold-dark: #aa771c;     /* Shadow gold */
+    
+    /* The Magic Gradient: Looks like real metal */
+    --gold-foil: linear-gradient(
+        45deg, 
+        #AA771C 0%, 
+        #FFD700 25%, 
+        #FBF5B7 50%, 
+        #FFD700 75%, 
+        #AA771C 100%
+    );
+    
+    --text-color: #ffffff;    /* White for small body text */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    /* Optional: Add a subtle gold dust texture if you have one */
+}
+
+/* 1. Turning Text into Gold */
+h1, h2, h3, .parents, .highlight-date, .intro-text {
+    /* This applies the gradient to the text itself */
+    background: var(--gold-foil);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Adds a soft glow */
+    filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.3));
+}
+
+/* 2. The Borders & Lines */
+.event-box, .map-container, #enter-content {
+    background: var(--card-bg);
+    border: 1px solid transparent;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); /* Golden Halo */
+    
+    /* Gold Border Trick */
+    border-image: var(--gold-foil);
+    border-image-slice: 1;
+}
+
+/* 3. The Buttons */
+.scroll-btn, #enter-btn {
+    background: transparent;
+    color: var(--gold-leaf); /* Fallback color */
+    
+    /* Gradient Border */
+    border: 2px solid var(--gold-leaf); 
+    position: relative;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: var(--gold-foil);
+    color: #000; /* Text turns black on hover for readability */
+    box-shadow: 0 0 20px var(--gold-leaf);
+}
+
+/* 4. Make the Icons Gold */
+.fas, .intro-text {
+    color: var(--gold-leaf); /* Solid gold for icons */
+}
+
+/* 5. The Enter Screen */
+#enter-overlay {
+    background-color: #000;
+}
+
+:root {
+    /* --- ROYAL CRIMSON & GOLD PALETTE --- */
+    --bg-dark: #5e0a0a;       /* Deepest Blood Red */
+    --card-bg: #7a1212;       /* Slightly lighter red for cards */
+    
+    /* The Gold Spectrum */
+    --gold-leaf: #d4af37;     /* Standard Gold */
+    --text-cream: #FFFDD0;    /* Cream (better than white on red) */
+    
+    /* Luxury Gold Gradient */
+    --gold-foil: linear-gradient(
+        45deg, 
+        #bf953f 0%, 
+        #fcf6ba 40%, 
+        #b38728 60%, 
+        #fbf5b7 100%
+    );
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-cream);
+    /* Optional: Add a subtle pattern if you have one */
+    background-image: radial-gradient(circle, #7a1212 10%, #5e0a0a 90%);
+}
+
+/* 1. Main Text - Gold Foil Effect */
+h1, h2, h3, .highlight-date, .intro-text, .couple-names-intro {
+    background: var(--gold-foil);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* 2. Normal Text (Parents, details) */
+.parents, .invite-line, .main-details p, .loc, .time {
+    color: var(--text-cream);
+}
+
+/* 3. The Event Cards & Map */
+.event-box, .map-container {
+    background: var(--card-bg);
+    border: 1px solid var(--gold-leaf);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    
+    /* Double Border Effect for elegance */
+    outline: 1px solid var(--gold-leaf);
+    outline-offset: -5px;
+}
+
+/* 4. Icons & Dividers */
+.fas, .divider, .ampersand {
+    color: var(--gold-leaf);
+}
+
+/* 5. Buttons (Gold on Red) */
+.scroll-btn, #enter-btn {
+    background: linear-gradient(to bottom, #d4af37, #aa771c);
+    color: #3e0000; /* Dark red text matches the background */
+    border: 1px solid #fcf6ba;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: #fcf6ba; /* Turns pale gold/cream */
+    transform: translateY(-2px);
+}
+
+/* 6. The Enter Screen (Deepest Red) */
+#enter-overlay {
+    background-color: #3e0000; /* Darker than main body for drama */
+}
+
+/* 7. Gold Filter for Flowers */
+/* This makes your white flowers look like antique gold ornaments */
+.floral-deco, .falling-flower {
+    filter: sepia(100%) saturate(200%) brightness(80%) hue-rotate(5deg);
+    opacity: 0.9;
+}
+:root {
+    /* --- RED SILK & GOLD PALETTE --- */
+    
+    /* 1. The Gradient: Flows from Dark Maroon to Bright Crimson */
+    --silk-gradient: linear-gradient(135deg, #700b0b 0%, #c41e3a 100%);
+    
+    --card-bg: #8a1c1c;       /* A lighter, warmer red for the text boxes */
+    --gold-leaf: #ffe57f;     /* A brighter, softer gold that reads well on red */
+    --text-cream: #fff5e6;    /* Warm white text */
+    
+
+    /* The Gold Foil Text Effect */
+    --gold-solid: #FFD700;
+}
+
+body {
+    /* Using the gradient instead of a solid color */
+    background: var(--silk-gradient);
+    background-attachment: fixed; /* Keeps the gradient smooth while scrolling */
+    color: var(--text-cream);
+    min-height: 100vh; /* Ensures the gradient covers the whole screen */
+}
+
+/* 1. The Enter Screen (Bright & Welcoming) */
+#enter-overlay {
+    /* Use the same gradient so it matches the site */
+    background: var(--silk-gradient); 
+}
+
+/* 2. Event Cards & Map */
+/* We make these slightly transparent so the gradient glows through */
+.event-box, .map-container {
+    background: rgba(100, 10, 10, 0.6); /* Semi-transparent red */
+    border: 1px solid var(--gold-leaf);
+    backdrop-filter: blur(5px); /* Modern frosted glass effect */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* 3. Text & Icons */
+h1, h2, h3, .couple-names-intro {
+    /* background: var(--gold-foil); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* Adding a slight shadow helps readability on the lighter red */
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+}
+
+.highlight-date, .intro-text {
+    color: var(--gold-leaf);
+}
+
+/* 4. Buttons */
+.scroll-btn, #enter-btn {
+    background: transparent;
+    border: 2px solid var(--gold-leaf);
+    color: var(--gold-leaf);
+}
+
+.scroll-btn:hover, #enter-btn:hover {
+    background: var(--gold-leaf);
+    color: #700b0b; /* Text turns dark red */
+}
+
+/* 5. Flowers - Brighten them up */
+.floral-deco, .falling-flower {
+    filter: sepia(100%) saturate(300%) brightness(110%);
+    opacity: 0;
+}
