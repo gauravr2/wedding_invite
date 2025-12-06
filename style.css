@@ -1,0 +1,78 @@
+:root {
+    --primary-color: #8B0000; /* Deep Red */
+    --gold-color: #D4AF37;    /* Gold */
+    --cream-color: #FFFDD0;   /* Cream Background */
+    --text-color: #333;
+}
+
+body {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    background-color: var(--cream-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive; /* Calligraphy font */
+    font-size: 4rem;
+    margin: 10px 0;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #fffdd0 60%, #ffe4b5 100%);
+    border-bottom: 5px solid var(--gold-color);
+}
+
+.shloka {
+    color: var(--gold-color);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Event Cards */
+.events {
+    padding: 50px 20px;
+}
+
+.event-card {
+    border: 2px solid var(--gold-color);
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 500px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    border: 1px solid var(--gold-color);
+}
+
+.btn:hover {
+    background-color: var(--gold-color);
+    color: var(--primary-color);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    h1 { font-size: 3rem; }
+}
