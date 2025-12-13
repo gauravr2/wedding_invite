@@ -1,9 +1,13 @@
 :root {
-    --gold: #12110c;
+    --gold: #d4af37;
+    /* Brighter gold for blue bg */
     --dark-gold: #B49020;
-    --text-grey: #555;
+    --text-grey: #f5ecc8;
+    /* Light cream text for dark bg */
     --cream-bg: #f5ecc8;
     --leaf-green: #4A6741;
+    --royal-blue: #223366;
+    /* Deep Royal Blue */
 }
 
 * {
@@ -14,7 +18,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Cormorant Garamond', serif;
-    background-color: var(--cream-bg);
+    background-color: var(--royal-blue);
     color: var(--text-grey);
     overflow-x: hidden;
     /* Prevent horizontal scroll */
@@ -67,7 +71,7 @@ body {
 
 /* Individual Item Styles - NO ANIMATION HERE */
 .intro-ganesha {
-    width: 150px;
+    width: 300px;
     height: auto;
     margin: 20px 0;
     /* Adds safe space between image and text */
@@ -128,6 +132,13 @@ body {
     }
 }
 
+.name-prefix {
+    color: var(--gold);
+    font-size: 0.7rem;
+    margin-bottom: 0px;
+    font-family: 'Cinzel', serif;
+}
+
 /* --- 2. MAIN CARD --- */
 .wedding-card {
     min-height: 100vh;
@@ -138,7 +149,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 20px;
-    background: linear-gradient(to bottom, var(--cream-bg), #fff);
+    background: linear-gradient(to bottom, var(--royal-blue), #111a33);
 
     /* CHANGE HERE: Start hidden, but REMOVE the 'animation' line */
     opacity: 0;
@@ -166,7 +177,7 @@ body {
 }
 
 .parents {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     font-weight: bold;
     color: var(--gold);
     letter-spacing: 1px;
@@ -186,10 +197,16 @@ h1 {
     font-weight: 400;
 }
 
+.groom,
+.bride {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
 .ampersand {
     font-size: 1.5rem;
     color: var(--gold);
-    margin: 10px 0;
+    margin: 4px 0;
 }
 
 .highlight-date {
@@ -268,11 +285,12 @@ h1 {
 }
 
 /* --- 3. EVENTS SECTION --- */
+/* --- 3. EVENTS SECTION --- */
 #events-section {
-    background-color: #fff;
+    background-color: var(--royal-blue);
     padding: 60px 20px;
     text-align: center;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--gold);
 }
 
 #events-section h2 {
@@ -293,12 +311,12 @@ h1 {
     padding: 30px;
     width: 300px;
     border-radius: 10px;
-    background: #fdfdfd;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    background: transparent;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .event-box h3 {
-    color: var(--leaf-green);
+    color: var(--gold);
     font-family: 'Cinzel', serif;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
@@ -327,7 +345,7 @@ h1 {
 
     /* Fade flowers on mobile so text is readable */
     .parents {
-        font-size: 1rem;
+        font-size: 1.15rem;
     }
 }
 
@@ -386,7 +404,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--royal-maroon);
+    background-color: var(--royal-blue);
     /* Or your maroon color #630330 */
     z-index: 10000;
     /* Must be on top of everything */

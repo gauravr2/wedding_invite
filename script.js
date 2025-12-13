@@ -5,9 +5,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     const enterBtn = document.getElementById('enter-btn');
     const enterOverlay = document.getElementById('enter-overlay');
-    const introLayer = document.getElementById('intro-layer'); // The white background
+    // const introLayer = document.getElementById('intro-layer'); // REMOVED
     const music = document.getElementById('bg-music');
-    const ganeshaAnimator = document.getElementById('ganesha-animator');
+    // const ganeshaAnimator = document.getElementById('ganesha-animator'); // REMOVED
     const mainContent = document.getElementById('main-content');
 
     enterBtn.addEventListener('click', function() {
@@ -22,25 +22,12 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             enterOverlay.style.display = "none"; 
             
-            // 3. START FLOWERS/SNOW NOW (Moved inside the click!)
+            // 3. START FLOWERS/SNOW NOW
             createSnowfall();
 
-            // 4. Start Ganesha Animation
-            // Since introLayer is now visible by default, this will show up immediately
-            ganeshaAnimator.classList.add('run-animation');
-            
-            // 5. Sequence the transitions
-            
-            // Step A: Show the Wedding Card (Behind the white layer) at 3 seconds
-            setTimeout(() => {
-                mainContent.classList.add('fade-in-card');
-            }, 3000);
-
-            // Step B: Fade out the White Ganesha Layer at 3.5 seconds
-            // This reveals the Wedding Card sitting behind it
-            setTimeout(() => {
-                introLayer.classList.add('hide-intro');
-            }, 3500);
+            // 4. Show Wedding Card IMMEDIATELY (No Ganesha Animation)
+            // Just add the fade-in class right away (or keep a tiny delay for smoothness)
+            mainContent.classList.add('fade-in-card');
             
         }, 500); 
     });
