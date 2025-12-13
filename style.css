@@ -445,6 +445,8 @@ h1 {
     /*border: 2px solid var(--gold);*/
     padding: 40px;
     border-radius: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .couple-names-intro {
