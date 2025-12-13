@@ -148,7 +148,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 60px 20px;
     background: linear-gradient(to bottom, var(--royal-blue), #111a33);
 
     /* CHANGE HERE: Start hidden, but REMOVE the 'animation' line */
@@ -174,6 +174,12 @@ body {
     font-size: 2rem;
     color: var(--gold);
     margin-bottom: 20px;
+}
+
+.parents-symbol {
+    width: 40px;
+    height: auto;
+    margin-bottom: 5px;
 }
 
 .parents {
@@ -462,3 +468,75 @@ h1 {
     width: 100%;
     /* Fills the box width */
 }
+
+/* --- IMAGE CORNER DECORATION --- */
+.corner-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    /* Behind content if needed, but low z-index */
+}
+
+/* Connecting Golden Line Frame */
+.corner-images::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid var(--gold);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.corner-deco {
+    position: absolute;
+    width: 70px;
+    /* Adjust as needed */
+    height: auto;
+}
+
+.top-left-deco {
+    top: 0;
+    left: 0;
+    transform: scaleX(1);
+    /* No rotation needed if image is oriented top-left */
+}
+
+.top-right-deco {
+    top: 0;
+    right: 0;
+    transform: scaleX(-1);
+    /* Flip horizontally */
+}
+
+.bottom-left-deco {
+    bottom: 0;
+    left: 0;
+    transform: scaleY(-1);
+    /* Flip vertically */
+}
+
+.bottom-right-deco {
+    bottom: 0;
+    right: 0;
+    transform: scale(-1);
+    /* Flip both */
+}
+
+@media (max-width: 768px) {
+    .corner-deco {
+        width: 60px;
+        /* Smaller on mobile */
+    }
+}
+
+/* Inner thicker border creating the double line effect */
+
+
+/* Decorative Corners */
