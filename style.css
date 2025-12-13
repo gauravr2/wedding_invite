@@ -139,6 +139,13 @@ body {
     font-family: 'Cinzel', serif;
 }
 
+.swastik-symbol {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 /* --- 2. MAIN CARD --- */
 .wedding-card {
     min-height: 100vh;
@@ -326,6 +333,19 @@ h1 {
     font-family: 'Cinzel', serif;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.event-box .date {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text-grey);
+    margin-bottom: 5px;
+}
+
+.event-box .time {
+    font-size: 1.1rem;
+    color: var(--text-grey);
     margin-bottom: 15px;
 }
 

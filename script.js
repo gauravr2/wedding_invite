@@ -9,10 +9,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const music = document.getElementById('bg-music');
     // const ganeshaAnimator = document.getElementById('ganesha-animator'); // REMOVED
     const mainContent = document.getElementById('main-content');
+    
+    // Prevent scrolling behind overlay
+    document.body.style.overflow = "hidden";
 
     enterBtn.addEventListener('click', function() {
         
         // 1. Play Music
+
         music.play().catch(error => console.log("Music play failed", error));
 
         // 2. Hide the Enter Screen (Maroon overlay)
@@ -21,6 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
         
         setTimeout(() => {
             enterOverlay.style.display = "none"; 
+            
+            // Allow scrolling again and reset to top
+            document.body.style.overflow = "auto";
+            window.scrollTo(0, 0);
             
             // 3. START FLOWERS/SNOW NOW
             createSnowfall();
