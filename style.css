@@ -436,11 +436,19 @@ h1 {
     /* Must be on top of everything */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; REMOVED to allow scrolling on overflow */
+    align-items: flex-start;
+    /* Start from top */
+    overflow-y: auto;
+    /* Allow scrolling */
+    padding: 20px 0;
+    /* Add some space at top/bottom */
     color: var(--gold);
 }
 
 .enter-content {
+    /* Auto margin handles vertical centering when height is sufficient */
+    margin: auto;
     text-align: center;
     /*border: 2px solid var(--gold);*/
     padding: 40px;
